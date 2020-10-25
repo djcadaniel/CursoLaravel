@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function index(){
         $users = User::latest() ->get();
-        return view('users.index', [
+        return view('users.index', [//paso mi vista
             'users' => $users
         ]);
     }
@@ -22,7 +22,7 @@ class UserController extends Controller
 
         return back();  //retorna a la vista anterior
     }
-    public function destroy(){
+    public function destroy(User $user){
         $user -> delete();
 
         return back();

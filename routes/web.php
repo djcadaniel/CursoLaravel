@@ -16,3 +16,6 @@ Route::get('/','App\Http\Controllers\UserController@index' );
 Route::post('users','App\Http\Controllers\UserController@store')->name('users.store');
 Route::delete('users/{user}','App\Http\Controllers\UserController@destroy')->name('users.destroy');
 
+Route::get('semaforos','App\Http\Controllers\SemaforoController@index');
+Route::post('semaforos','App\Http\Controllers\SemaforoController@store')->name('semaforos.store');
+Route::delete('semaforos/{semaforo}','App\Http\Controllers\SemaforoController@destroy')->name('semaforos.destroy');

@@ -15,18 +15,22 @@
                         <tr>
                             <th>Id</th>
                             <th>Nombre</th>
-                            <th>Email</th>
+                            <th>Latitud</th>
+                            <th>Longitud</th>
+                            
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($semaforos as $sem)
                             <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
+                                <td>{{ $sem->id }}</td>
+                                <td>{{ $sem->nombre }}</td>
+                                <td>{{ $sem->latitude }}</td>
+                                <td>{{ $sem->longitude }}</td>
+                                
                                 <td>
-                                    <form action="{{ route('users.destroy', $user) }}" method="POST">
+                                    <form action="{{ route('semaforos.destroy', $sem) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <input type="submit" value="eliminar" class="btn btn-sm btn-danger"
