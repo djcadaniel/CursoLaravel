@@ -10,54 +10,63 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8 mx-auto">
+
+                @if($errors->any())
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        {{$error}} <br>
+                    @endforeach
+                </div>
+                @endif
+                
                 <div class="card border-0 shadow">
                     <div class="card-body">
-
-                        @if($errors->any())
-                        <div class="alert alert-danger">
-                            @foreach($errors->all() as $error)
-                                {{$error}} <br>
-                            @endforeach
-                        </div>
-                        @endif
-
-                        <form action="{{route('users.store')}}" method="POST">
+                        <form action="{{route('zapatillas.store')}}" method="POST">
                             <div class="form-row">
                                 <div class="col-sm-3">
                                     <input type="text" name="name" class="form-control" placeholder="Nombre" value="{{old('name')}}">
                                 </div>
-                                <div class="col-sm-4">
-                                    <input type="text" name="email" class="form-control" placeholder="Email" value="{{old('email')}}">
+                                <div class="col-sm-3">
+                                    <input type="text" name="marca" class="form-control" placeholder="Marca" value="{{old('marca')}}">
                                 </div>
                                 <div class="col-sm-3">
-                                    <input type="password" name="password" class="form-control" placeholder="Password" >
+                                    <input type="text" name="color" class="form-control" placeholder="Color" value="{{old('color')}}">
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" name="precio" class="form-control" placeholder="Precio"value="{{old('precio')}}">
                                 </div>
                                 <div class="col-auto">
                                     @csrf
-                                    <button type="submit" class="btn btn-primary">Enviar </button>
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    
                 </div>
+            </div>
+            <div class="col-sm-8 mx-auto">
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Nombre</th>
-                            <th>Email</th>
+                            <th>Marca</th>
+                            <th>Color</th>
+                            <th>Precio</th>
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($zapatillas as $zap)
                             <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
+                                <td>{{ $zap->id }}</td>
+                                <td>{{ $zap->name}}</td>
+                                <td>{{ $zap->marca }}</td>
+                                <td>{{ $zap->color }}</td>
+                                <td>{{ $zap->precio }}</td>
+                                
                                 <td>
-                                    <form action="{{ route('users.destroy', $user) }}" method="POST">
+                                    <form action="{{ route('zapatillas.destroy', $zap) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <input type="submit" value="eliminar" class="btn btn-sm btn-danger"

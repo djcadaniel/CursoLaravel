@@ -19,3 +19,7 @@ Route::delete('users/{user}','App\Http\Controllers\UserController@destroy')->nam
 Route::get('semaforos','App\Http\Controllers\SemaforoController@index');
 Route::post('semaforos','App\Http\Controllers\SemaforoController@store')->name('semaforos.store');
 Route::delete('semaforos/{semaforo}','App\Http\Controllers\SemaforoController@destroy')->name('semaforos.destroy');
+
+Route::get('zapatillas','App\Http\Controllers\ZapatillaController@index');
+Route::post('zapatillas','App\Http\Controllers\ZapatillaController@store')->name('zapatillas.store');
+Route::delete('zapatilla/{zapatilla}','App\Http\Controllers\ZapatillaController@destroy')->name('zapatillas.destroy');
